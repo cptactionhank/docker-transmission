@@ -10,6 +10,6 @@ RUN apt-get update -qq \
 
 VOLUME ["/var/lib/transmission-daemon"]
 
-ENTRYPOINT ["transmission-daemon", "--foreground", "-g", "/var/lib/transmission-daemon/info", "--no-portmap", "--log-error"]
-
 EXPOSE 9091 51413/tcp 51413/udp
+
+ENTRYPOINT ["transmission-daemon", "--foreground", "--config-dir", "/var/lib/transmission-daemon/info", "--log-error"]
