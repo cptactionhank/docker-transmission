@@ -1,12 +1,7 @@
-FROM ubuntu:trusty
+FROM alpine:latest
 MAINTAINER cptactionhank <cptactionhank@users.noreply.github.com>
 
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 365C5CA1 \
-    && echo "deb http://ppa.launchpad.net/transmissionbt/ppa/ubuntu $(lsb_release -cs) main" \
-       > /etc/apt/sources.list.d/launchpad-transmissionbt.list
-
-RUN apt-get update -qq \
-    && apt-get -yqq install transmission-daemon
+RUN apk add transmission-daemon
 
 VOLUME ["/var/lib/transmission-daemon"]
 
